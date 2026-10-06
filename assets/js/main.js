@@ -1,0 +1,455 @@
+// ===== UTILITIES =====
+const $ = (q, root = document) => root.querySelector(q);
+const $$ = (q, root = document) => Array.from(root.querySelectorAll(q));
+
+// ===== YEAR =====
+const yearEl = $('#year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+// ===== ACTIVE NAVIGATION LINK =====
+const rawPath = window.location.pathname.replace(/\/index(\.html)?$/, '').replace(/\/$/, '');
+const currentSlug = rawPath.split('/').pop() || '';
+
+$$('.nav a').forEach(link => {
+  const rawHref = (link.getAttribute('href') || '').replace(/^\//, '').replace(/\.html$/, '');
+  const isHome = currentSlug === '' || currentSlug === 'index';
+  if ((isHome && (rawHref === '' || rawHref === 'index')) || (rawHref && rawHref === currentSlug)) {
+    link.classList.add('active');
+  }
+});
+
+// ===== THEME TOGGLE & PERSISTENCE =====
+const themeToggle = $('#themeToggle');
+
+function applyTheme() {
+  const saved = localStorage.getItem('theme');
+  document.body.classList.toggle('light', saved === 'light');
+}
+
+if (!localStorage.getItem('theme')) {
+  const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+  localStorage.setItem('theme', prefersLight ? 'light' : 'dark');
+}
+
+applyTheme();
+
+themeToggle?.addEventListener('click', () => {
+  const next = localStorage.getItem('theme') === 'dark' ? 'light' : 'dark';
+  localStorage.setItem('theme', next);
+  applyTheme();
+});
+
+function isLight() { return document.body.classList.contains('light'); }
+
+// ===== MOBILE NAVIGATION TOGGLE =====
+const menuToggle = $('#menuToggle');
+const nav = $('#nav');
+menuToggle?.addEventListener('click', () => nav?.classList.toggle('open'));
+
+// Close mobile nav when clicking a link
+$$('.nav a').forEach(a => a.addEventListener('click', () => nav?.classList.remove('open')));
+
+// ===== REVEAL ON SCROLL =====
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('is-visible');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+
+$$('.reveal, .reveal-up, .reveal-down').forEach(el => io.observe(el));
+
+// ===== BUTTON RIPPLE EFFECT =====
+$$('.btn').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    const rect = btn.getBoundingClientRect();
+    const ripple = document.createElement('span');
+    ripple.className = 'ripple-el';
+    const size = Math.max(rect.width, rect.height);
+    ripple.style.cssText = `
+      width:${size}px; height:${size}px;
+      left:${e.clientX - rect.left - size / 2}px;
+      top:${e.clientY - rect.top - size / 2}px;
+    `;
+    btn.appendChild(ripple);
+    ripple.addEventListener('animationend', () => ripple.remove());
+  });
+});
+
+
+
+// ===== CONTACT FORM - GMAIL COMPOSE =====
+const contactForm = document.getElementById('contactForm');
+const formStatus = document.getElementById('formStatus');
+
+if (contactForm) {
+  contactForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    if (!name || !email || !message) {
+      formStatus.textContent = 'Please fill in all fields.';
+      formStatus.style.color = '#f87171';
+      return;
+    }
+
+    const recipient = 'nceepvishal@gmail.com';
+
+    const subject = `Portfolio Contact - Message from ${name}`;
+
+    const body =
+`Hi Vishal,
+
+You have received a new message from your portfolio website.
+
+Name: ${name}
+Email: ${email}
+
+Message:
+${message}
+
+Regards,
+${name}
+${email}`;
+
+    const gmailURL =
+      'https://mail.google.com/mail/?view=cm&fs=1' +
+      '&to=' + encodeURIComponent(recipient) +
+      '&su=' + encodeURIComponent(subject) +
+      '&body=' + encodeURIComponent(body);
+
+    // Open Gmail compose
+    window.open(gmailURL, '_blank');
+
+    formStatus.textContent =
+      '✓ Gmail compose opened. Please review and send the message.';
+
+    formStatus.style.color = '#34d399';
+
+    contactForm.reset();
+  });
+}
+
+// ===== TOAST NOTIFICATION =====
+function showToast(msg) {
+  let toast = $('#toastNotification');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'toastNotification';
+    toast.className = 'toast';
+    document.body.appendChild(toast);
+  }
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 3500);
+}
+
+// ===== COPY EMAIL UTILITY =====
+const copyEmailBtn = $('#copyEmailBtn');
+if (copyEmailBtn) {
+  copyEmailBtn.addEventListener('click', () => {
+    const email = 'ncepvishal@gmail.com';
+    navigator.clipboard.writeText(email).then(() => {
+      showToast('Email address copied to clipboard!');
+    }).catch(() => {
+      showToast('Email: ncepvishal@gmail.com');
+    });
+  });
+}
+
+// ===== CARD SPOTLIGHT MOUSE TRACKING =====
+const cards = $$('.card');
+let isTrackingSpotlight = false;
+
+window.addEventListener('mousemove', (e) => {
+  if (isTrackingSpotlight) return;
+  isTrackingSpotlight = true;
+
+  requestAnimationFrame(() => {
+    cards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      if (
+        e.clientX >= rect.left - 100 &&
+        e.clientX <= rect.right + 100 &&
+        e.clientY >= rect.top - 100 &&
+        e.clientY <= rect.bottom + 100
+      ) {
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      }
+    });
+    isTrackingSpotlight = false;
+  });
+}, { passive: true });
+
+// ===== TYPING ANIMATION (profile.java) =====
+const codeTarget = $('.code-block code');
+if (codeTarget) {
+  const lines = [
+    { text: 'public class VishalMishra {', delay: 200 },
+    { text: '  public static void main(String[] args) {', delay: 700 },
+    { text: '    String name = "Vishal Mishra";', delay: 1000 },
+    { text: '    String role = "Software Engineer";', delay: 1200 },
+    { text: '    String[] stack = {', delay: 1400 },
+    { text: '      "Java", "JavaScript", "Android",', delay: 1600 },
+    { text: '      "Spring Boot", "SQL"', delay: 1800 },
+    { text: '    };', delay: 2000 },
+    { text: '    String status = "Open to opportunities";', delay: 2200 },
+    { text: '  }', delay: 2400 },
+    { text: '}', delay: 2600 },
+  ];
+
+  codeTarget.innerHTML = '';
+  const cursor = document.createElement('span');
+  cursor.className = 'cursor';
+  codeTarget.appendChild(cursor);
+
+  function typeLines(index = 0) {
+    if (index >= lines.length) return;
+
+    const { text, delay } = lines[index];
+
+    setTimeout(() => {
+      let i = 0;
+
+      function typeChar() {
+        if (i < text.length) {
+          cursor.insertAdjacentText('beforebegin', text[i]);
+          i++;
+          setTimeout(typeChar, 30 + Math.random() * 20);
+        } else {
+          if (index < lines.length - 1) {
+            cursor.insertAdjacentText('beforebegin', '\n');
+          }
+          typeLines(index + 1);
+        }
+      }
+
+      typeChar();
+    }, index === 0 ? delay + 500 : 0);
+  }
+
+  const heroSection = $('.hero');
+
+  if (heroSection) {
+    const heroIo = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        typeLines();
+        heroIo.disconnect();
+      }
+    }, { threshold: 0.3 });
+
+    heroIo.observe(heroSection);
+  } else {
+    typeLines();
+  }
+}
+
+// ===== MULTI-COLOR FLOATING PARTICLES & MOUSE CONNECTIONS =====
+const canvas = $('#bgParticles');
+if (canvas) {
+  const ctx = canvas.getContext('2d');
+  let width, height, particles;
+  let mouse = { x: -1000, y: -1000 };
+
+  const updateTouch = (e) => {
+    if (e.touches && e.touches[0]) {
+      mouse.x = e.touches[0].clientX;
+      mouse.y = e.touches[0].clientY;
+    }
+  };
+
+  const resetTouch = () => {
+    mouse.x = -1000;
+    mouse.y = -1000;
+  };
+
+  window.addEventListener('touchstart', updateTouch, { passive: true });
+  window.addEventListener('touchmove', updateTouch, { passive: true });
+  window.addEventListener('touchend', resetTouch, { passive: true });
+  window.addEventListener('touchcancel', resetTouch, { passive: true });
+  window.addEventListener('mouseleave', resetTouch, { passive: true });
+
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+    initParticles();
+  }
+  window.addEventListener('resize', resize, { passive: true });
+
+  const colors = [
+    { r: 56,  g: 189, b: 248 }, // Cyan
+    { r: 129, g: 140, b: 248 }, // Indigo
+    { r: 192, g: 132, b: 252 }, // Violet
+    { r: 244, g: 114, b: 182 }  // Pink
+  ];
+
+  function initParticles() {
+    const isMobile = width < 600;
+    const n = isMobile ? 35 : 75;
+    particles = Array.from({ length: n }, () => {
+      const col = colors[Math.floor(Math.random() * colors.length)];
+      return {
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() * 0.7 - 0.35),
+        vy: (Math.random() * 0.7 - 0.35),
+        r: Math.random() * 2 + 1,
+        color: col
+      };
+    });
+  }
+  resize();
+
+  const LINK_DIST = 115;
+  const LINK_DIST2 = LINK_DIST * LINK_DIST;
+  const MOUSE_DIST = 145;
+  const MOUSE_DIST2 = MOUSE_DIST * MOUSE_DIST;
+
+  function step() {
+    ctx.clearRect(0, 0, width, height);
+
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+
+      if (p.x < 0 || p.x > width)  p.vx *= -1;
+      if (p.y < 0 || p.y > height) p.vy *= -1;
+
+      // Draw floating particle dot
+      const isLightMode = isLight();
+      const dotAlpha = isLightMode ? 0.65 : 0.8;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${dotAlpha})`;
+      ctx.fill();
+
+      // Connect particles to mouse cursor with glowing line
+      const mdx = p.x - mouse.x;
+      const mdy = p.y - mouse.y;
+      const md2 = mdx * mdx + mdy * mdy;
+      if (md2 < MOUSE_DIST2) {
+        const mAlpha = (1 - md2 / MOUSE_DIST2) * 0.45;
+        ctx.strokeStyle = `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${mAlpha})`;
+        ctx.lineWidth = 1.2;
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(mouse.x, mouse.y);
+        ctx.stroke();
+      }
+
+      // Connect to neighboring particles with color-mixed line
+      for (let j = i + 1; j < particles.length; j++) {
+        const q = particles[j];
+        const dx = p.x - q.x;
+        const dy = p.y - q.y;
+        const d2 = dx * dx + dy * dy;
+        if (d2 < LINK_DIST2) {
+          const alpha = (1 - d2 / LINK_DIST2) * (isLightMode ? 0.16 : 0.24);
+          const mr = Math.round((p.color.r + q.color.r) / 2);
+          const mg = Math.round((p.color.g + q.color.g) / 2);
+          const mb = Math.round((p.color.b + q.color.b) / 2);
+
+          ctx.strokeStyle = `rgba(${mr}, ${mg}, ${mb}, ${alpha})`;
+          ctx.lineWidth = 0.85;
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(q.x, q.y);
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+// ===== PRELOADER & SCROLL PROGRESS & BACK TO TOP =====
+window.addEventListener('load', () => {
+  const preloader = $('#preloader');
+  if (preloader) {
+    setTimeout(() => preloader.classList.add('loaded'), 200);
+    setTimeout(() => { preloader.style.display = 'none'; }, 700);
+  }
+});
+
+const scrollProgress = $('#scrollProgress');
+const backToTop = $('#backToTop');
+
+window.addEventListener('scroll', () => {
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  const current = window.scrollY;
+  const pct = total > 0 ? (current / total) * 100 : 0;
+  if (scrollProgress) scrollProgress.style.width = `${pct}%`;
+
+  if (backToTop) {
+    if (current > 350) backToTop.classList.add('visible');
+    else backToTop.classList.remove('visible');
+  }
+}, { passive: true });
+
+backToTop?.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+
+// ===== CUSTOM CURSOR (Dynamic Creation & Event Delegation) =====
+if (window.matchMedia('(pointer: fine)').matches) {
+  let dot = $('.cursor-dot');
+  let ring = $('.cursor-ring');
+
+  if (!dot) {
+    dot = document.createElement('div');
+    dot.className = 'cursor-dot';
+    document.body.appendChild(dot);
+  }
+  if (!ring) {
+    ring = document.createElement('div');
+    ring.className = 'cursor-ring';
+    document.body.appendChild(ring);
+  }
+
+  let mx = -100, my = -100;
+  let rx = -100, ry = -100;
+
+  window.addEventListener('mousemove', (e) => {
+    mx = e.clientX;
+    my = e.clientY;
+    dot.style.left = `${mx}px`;
+    dot.style.top = `${my}px`;
+  }, { passive: true });
+
+  function followCursor() {
+    rx += (mx - rx) * 0.18;
+    ry += (my - ry) * 0.18;
+    ring.style.left = `${rx}px`;
+    ring.style.top = `${ry}px`;
+    requestAnimationFrame(followCursor);
+  }
+  requestAnimationFrame(followCursor);
+
+  const hoverTargets = 'a, button, input, textarea, select, .btn, .icon, .card, .nav a, .pill, [data-filter]';
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest(hoverTargets)) ring.classList.add('hover');
+  });
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest(hoverTargets)) ring.classList.remove('hover');
+  });
+
+  document.addEventListener('mouseleave', () => {
+    dot.style.opacity = '0';
+    ring.style.opacity = '0';
+  });
+  document.addEventListener('mouseenter', () => {
+    dot.style.opacity = '1';
+    ring.style.opacity = '1';
+  });
+}

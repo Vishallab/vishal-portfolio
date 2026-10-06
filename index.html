@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="author" content="Vishal Mishra " />
+    <meta name="theme-color" content="#38bdf8" />
+    <title>Vishal Mishra  - Software Engineer | Official Website</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Shadows+Into+Light&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script defer src="assets/js/main.js"></script>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+  </head>
+  <body class="theme-auto">
+    <!-- Preloader -->
+    <div class="preloader" id="preloader"><div class="preloader-logo">Vishal Mishra</div></div>
+    
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
+    <!-- Particle Canvas -->
+    <canvas id="bgParticles" aria-hidden="true"></canvas>
+
+    <!-- Header Navigation -->
+    <header class="site-header reveal-down">
+      <a class="brand" href="/">
+        <span class="logo glow">VM</span> <strong>Vishal Mishra</strong>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="/">Home</a>
+        <a href="about.html">About</a>
+        <a href="resume.html">Resume</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button
+          class="btn small outline"
+          id="themeToggle"
+          aria-label="Toggle theme"
+        >
+          <svg class="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="btn small" id="menuToggle" aria-label="Open menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              fill="currentColor"
+              d="M3 6h18v2H3zM3 11h18v2H3zM3 16h18v2H3z"
+            />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container">
+      <!-- Hero Section -->
+      <section class="hero reveal">
+        <div class="hero-text">
+          <div class="live-status">
+            <span class="pulse-dot"></span> Available for Software Roles
+          </div>
+          <h1 class="gradient-text">
+  Hi, I'm <span class="accent">Vishal Mishra</span>. 
+  Software Developer Building Reliable Web & Mobile Applications.
+</h1>
+          <p>
+  Software Engineer with experience in <strong>technical support</strong>,
+  <strong>mobile application development</strong>, <strong>JavaScript</strong>,
+  <strong>Android</strong>, and <strong>API integration</strong>.
+  Currently working with <strong>Java</strong> and expanding into
+  <strong>Spring Boot</strong> backend development while building reliable,
+  production-ready solutions.
+</p>
+          <div class="hero-cta">
+            <a class="btn outline ripple" href="resume.html">View Resume</a>
+            <a
+              class="btn outline ripple"
+              href="https://drive.google.com/file/d/1OtC1EBjFkSfujccUK9M5hIh6MQjLdSP7/view?usp=sharing"
+              target="_blank"
+              rel="noopener"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              Download PDF
+            </a>
+          </div>
+          <div class="hero-socials icons">
+            <a
+              class="icon"
+              href="https://github.com/Vishallab"
+              target="_blank"
+              rel="noopener"
+              aria-label="GitHub"
+            >
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                <path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.35-1.76-1.35-1.76-1.1-.76.08-.75.08-.75 1.22.09 1.86 1.26 1.86 1.26 1.08 1.85 2.83 1.32 3.52 1.01.11-.8.42-1.33.77-1.63-2.67-.3-5.47-1.33-5.47-5.92 0-1.31.47-2.39 1.25-3.23-.13-.31-.54-1.56.12-3.25 0 0 1.01-.32 3.31 1.23a11.5 11.5 0 0 1 6.04 0c2.3-1.55 3.31-1.23 3.31-1.23.66 1.69.25 2.94.12 3.25.78.84 1.25 1.92 1.25 3.23 0 4.6-2.81 5.62-5.49 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 12 .5Z" />
+              </svg>
+            </a>
+            <a
+              class="icon"
+              href="https://www.linkedin.com/in/vishalmishra01/"
+              target="_blank"
+              rel="noopener"
+              aria-label="LinkedIn"
+            >
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.1c.5-.9 1.8-2.2 3.7-2.2C20.3 8 24 10.6 24 16v8h-4v-7c0-1.7-.03-3.9-2.4-3.9-2.4 0-2.8 1.8-2.8 3.8V24h-4V8z" />
+              </svg>
+            </a>
+            <a
+              class="icon email-link"
+              href="mailto:ncepvishal@gmail.com?subject=Hello%20Vishal&body=Hi%20Vishal,%0D%0A%0D%0A"
+              aria-label="Email"
+            >
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                <path d="M2 4h20a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 2v.01L12 13 22 6.01V6H2zm0 12h20V8l-10 7L2 8v10z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="hero-art float-subtle">
+          <div class="glass card-xl tilt">
+            <div class="radar"></div>
+            <div class="code-block">
+              <div class="code-block-header">
+                <span class="code-dot red"></span>
+                <span class="code-dot yellow"></span>
+                <span class="code-dot green"></span>
+                <span class="code-filename">profile.java</span>
+              </div>
+<pre><code>public class VishalMishra {
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
+
+        String name = "Vishal Mishra";
+        String role = "Software Engineer";
+
+        String[] stack = {
+            "Java",
+            "JavaScript",
+            "HTML",
+            "CSS",
+            "Android",
+            "Spring Boot",
+            "SQL"
+        };
+
+        String status = "Available for roles";
+    }
+}</code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills & Tech Architecture -->
+<section class="section reveal">
+  <h2 class="section-title">Core Competencies & Stack</h2>
+
+  <div class="grid skills-grid">
+
+    <div class="card skill hover glow tilt">
+      <h3>Languages & Development</h3>
+      <div style="margin-top: 0.4rem;">
+        <span class="pill">Java</span>
+        <span class="pill">JavaScript</span>
+        <span class="pill">HTML</span>
+        <span class="pill">CSS</span>
+        <span class="pill">XML</span>
+      </div>
+    </div>
+
+    <div class="card skill hover glow tilt">
+      <h3>Mobile & Web</h3>
+      <div style="margin-top: 0.4rem;">
+        <span class="pill">Android</span>
+        <span class="pill">Cordova</span>
+        <span class="pill">jQuery</span>
+        <span class="pill">Responsive UI</span>
+      </div>
+    </div>
+
+    <div class="card skill hover glow tilt">
+      <h3>APIs & Databases</h3>
+      <div style="margin-top: 0.4rem;">
+        <span class="pill">REST APIs</span>
+        <span class="pill">Postman</span>
+        <span class="pill">SQL</span>
+        <span class="pill">MySQL</span>
+        <span class="pill">SQLite</span>
+      </div>
+    </div>
+
+    <div class="card skill hover glow tilt">
+      <h3>Tools & Engineering</h3>
+      <div style="margin-top: 0.4rem;">
+        <span class="pill">Git</span>
+        <span class="pill">GitHub</span>
+        <span class="pill">Android Studio</span>
+        <span class="pill">VS Code</span>
+        <span class="pill">JIRA</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Featured Projects Section -->
+<section class="section alt reveal">
+  <h2 class="section-title">Featured Projects</h2>
+
+  <div class="grid cards-3">
+
+    <!-- CineMate -->
+    <article class="card hover glow tilt">
+      <img
+        class="project-img"
+        src="assets/img/cinemate.png"
+        alt="CineMate Android application preview"
+        loading="lazy"
+      />
+
+      <div class="project-header-row">
+        <h3>CineMate</h3>
+        <span class="project-badge flagship">Android App</span>
+      </div>
+
+      <p>
+        Android movie discovery application for exploring trending, popular,
+        upcoming, and top-rated movies with detailed movie information,
+        similar movies, and trailer support using the TMDb API.
+      </p>
+
+      <div>
+        <span class="pill">Java</span>
+        <span class="pill">Android</span>
+        <span class="pill">Retrofit</span>
+        <span class="pill">TMDb API</span>
+      </div>
+
+      <div style="margin-top: auto; padding-top: 1rem;">
+        <a
+          class="btn small"
+          href="https://github.com/Vishallab/CineMate"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>
+      </div>
+    </article>
+
+
+    <!-- INK -->
+    <article class="card hover glow tilt">
+      <img
+        class="project-img"
+        src="assets/img/ink.png"
+        alt="INK Android application preview"
+        loading="lazy"
+      />
+
+      <div class="project-header-row">
+        <h3>INK – Quotes & Writing App</h3>
+        <span class="project-badge flagship">Android App</span>
+      </div>
+
+      <p>
+        Android application for writers and poetry lovers to discover,
+        save, and write meaningful quotes and thoughts. Built with Java
+        with a simple and expressive mobile-first experience.
+      </p>
+
+      <div>
+        <span class="pill">Java</span>
+        <span class="pill">Android</span>
+        <span class="pill">Android Studio</span>
+        <span class="pill">Lottie</span>
+      </div>
+
+      <div style="margin-top: auto; padding-top: 1rem;">
+        <a
+          class="btn small"
+          href="https://github.com/Vishallab/INK"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>
+      </div>
+    </article>
+
+
+    <!-- Chartr -->
+    <article class="card hover glow tilt">
+      <img
+        class="project-img"
+        src="assets/img/chartr.png"
+        alt="Chartr Android App Clone preview"
+        loading="lazy"
+      />
+
+      <div class="project-header-row">
+        <h3>Chartr App Clone</h3>
+        <span class="project-badge flagship">Android App</span>
+      </div>
+
+      <p>
+        Android UI clone of the Chartr public transportation app,
+        recreating its navigation, ticketing and pass flows, profile,
+        Google Maps integration, and QR/barcode functionality using
+        Java and XML.
+      </p>
+
+      <div>
+        <span class="pill">Java</span>
+        <span class="pill">Android</span>
+        <span class="pill">XML</span>
+        <span class="pill">Google Maps</span>
+      </div>
+
+      <div style="margin-top: auto; padding-top: 1rem;">
+        <a
+          class="btn small"
+          href="https://github.com/Vishallab/chartr"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+      <!-- Experience Section -->
+  <section class="section reveal">
+  <h2 class="section-title">Professional Experience</h2>
+
+  <div class="timeline">
+
+    <!-- Associate System Engineer -->
+    <div class="t-item">
+      <div class="t-dot"></div>
+
+      <div class="t-content card hover glow tilt job-card">
+        <div class="job-wrapper">
+
+          <div class="job-text">
+
+            <h3>
+              Associate System Engineer ·
+              <span class="accent">Tata Consultancy Services (TCS)</span>
+            </h3>
+
+            <p class="muted">Jul 2025 - Present · HDFC Life</p>
+
+            <ul>
+              <li>
+                Supporting and developing a <strong>Cordova-based Android application</strong>
+                using <strong>HTML, CSS, JavaScript, and jQuery</strong> for the HDFC Life platform.
+              </li>
+
+              <li>
+                Handling <strong>L2 production support</strong>, incident troubleshooting,
+                root cause analysis, SLA management, and coordination with development teams
+                to resolve application issues.
+              </li>
+
+              <li>
+                Working on <strong>API testing and debugging</strong> using Postman and
+                <strong>SQL-based data analysis</strong> for production issue investigation.
+              </li>
+
+              <li>
+                Contributing to <strong>JavaScript-based feature development</strong>,
+                application enhancements, testing, and <strong>UAT support</strong>.
+              </li>
+
+              <li>
+                Supporting technical documentation, recurring issue analysis, and
+                <strong>self-help solutions</strong> to improve operational efficiency.
+              </li>
+            </ul>
+
+            <div style="margin-top: 0.75rem;">
+              <span class="pill">JavaScript</span>
+              <span class="pill">HTML</span>
+              <span class="pill">CSS</span>
+              <span class="pill">Android</span>
+              <span class="pill">Cordova</span>
+              <span class="pill">jQuery</span>
+              <span class="pill">Postman</span>
+              <span class="pill">SQL</span>
+              <span class="pill">Git</span>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Graduate Trainee -->
+    <div class="t-item" style="margin-top: 1.25rem">
+      <div class="t-dot"></div>
+
+      <div class="t-content card hover glow tilt job-card">
+        <div class="job-wrapper">
+
+          <div class="job-text">
+
+            <h3>
+              Graduate Trainee ·
+              <span class="accent">Tata Consultancy Services (TCS)</span>
+            </h3>
+
+            <p class="muted">Jan 2025 - Jul 2025</p>
+
+            <ul>
+              <li>
+                Completed technical training in <strong>Core Java, SQL, Selenium,
+                and software development fundamentals</strong>.
+              </li>
+
+              <li>
+                Built a strong foundation in <strong>Java, OOP concepts, databases,
+                testing, and application support practices</strong>.
+              </li>
+
+              <li>
+                Transitioned into the <strong>HDFC Life application team</strong>
+                after completing the initial training phase.
+              </li>
+            </ul>
+
+            <div style="margin-top: 0.75rem;">
+              <span class="pill">Java</span>
+              <span class="pill">SQL</span>
+              <span class="pill">Selenium</span>
+              <span class="pill">OOP</span>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+    </main>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Vishal Mishra  · All rights reserved. </p>
+      <div class="footer-icons icons">
+        <a
+          class="icon"
+          href="https://github.com/Vishallab"
+          target="_blank"
+          rel="noopener"
+          aria-label="GitHub"
+        >
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.35-1.76-1.35-1.76-1.1-.76.08-.75.08-.75 1.22.09 1.86 1.26 1.86 1.26 1.08 1.85 2.83 1.32 3.52 1.01.11-.8.42-1.33.77-1.63-2.67-.3-5.47-1.33-5.47-5.92 0-1.31.47-2.39 1.25-3.23-.13-.31-.54-1.56.12-3.25 0 0 1.01-.32 3.31 1.23a11.5 11.5 0 0 1 6.04 0c2.3-1.55 3.31-1.23 3.31-1.23.66 1.69.25 2.94.12 3.25.78.84 1.25 1.92 1.25 3.23 0 4.6-2.81 5.62-5.49 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 12 .5Z" />
+          </svg>
+        </a>
+        <a
+          class="icon"
+          href="https://www.linkedin.com/in/vishalmishra01/"
+          target="_blank"
+          rel="noopener"
+          aria-label="LinkedIn"
+        >
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.1c.5-.9 1.8-2.2 3.7-2.2C20.3 8 24 10.6 24 16v8h-4v-7c0-1.7-.03-3.9-2.4-3.9-2.4 0-2.8 1.8-2.8 3.8V24h-4V8z" />
+          </svg>
+        </a>
+        <a
+          class="icon email-link"
+          href="mailto:ncepvishal@gmail.com?subject=Hello%20Vishal&body=Hi%20Vishal,%0D%0A%0D%0A"
+          aria-label="Email"
+        >
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M2 4h20a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 2v.01L12 13 22 6.01V6H2zm0 12h20V8l-10 7L2 8v10z" />
+          </svg>
+        </a>
+      </div>
+    </footer>
+  </body>
+</html>

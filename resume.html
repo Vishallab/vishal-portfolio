@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Resume · Vishal Mishra Portfolio</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script defer src="assets/js/main.js"></script>
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+  <style>
+    .certs-row {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width: 900px) {
+      .certs-row { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 700px) {
+      .certs-row { grid-template-columns: 1fr; }
+    }
+    .cert-org-badge.anthropic {
+      background: rgba(255, 153, 0, .14);
+      border-color: rgba(255, 153, 0, .35);
+      color: #ff9900;
+    }
+    .light .cert-org-badge.anthropic {
+      background: rgba(255, 153, 0, .1);
+      border-color: rgba(255, 153, 0, .3);
+      color: #b35c00;
+    }
+    .cert-org-badge.tcs {
+      background: rgba(0, 112, 194, .14);
+      border-color: rgba(0, 112, 194, .35);
+      color: #38bdf8;
+    }
+    .light .cert-org-badge.tcs {
+      background: rgba(0, 112, 194, .1);
+      border-color: rgba(0, 112, 194, .3);
+      color: #0059a3;
+    }
+  </style>
+</head>
+<body class="theme-auto">
+  <!-- Preloader -->
+  <div class="preloader" id="preloader"><div class="preloader-logo">VM</div></div>
+  
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+  
+  <!-- Particle Background -->
+  <canvas id="bgParticles" aria-hidden="true"></canvas>
+
+  <!-- Sticky Capsule Header -->
+  <header class="site-header reveal-down">
+    <a class="brand" href="/"><span class="logo glow">VM</span> <strong>Vishal Mishra</strong></a>
+    <nav class="nav" id="nav">
+      <a href="/">Home</a>
+      <a href="about.html">About</a>
+      <a href="resume.html">Resume</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn small outline" id="themeToggle" aria-label="Toggle theme">
+        <svg class="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <svg class="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+      <button class="btn small" id="menuToggle" aria-label="Open menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor" d="M3 6h18v2H3zM3 11h18v2H3zM3 16h18v2H3z" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="container">
+    <section class="section reveal">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+        <div>
+          <h1 class="gradient-text">Interactive Resume</h1>
+          <p class="muted" style="font-size: 1.02rem;">Software Developer focused on building reliable mobile applications, solving production problems, and turning technical requirements into working solutions.</p>
+        </div>
+        <a class="btn ripple" href="https://drive.google.com/file/d/1OtC1EBjFkSfujccUK9M5hIh6MQjLdSP7/view?usp=sharing"" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Download Resume (PDF)
+        </a>
+      </div>
+
+      <div class="resume-grid">
+        <!-- LEFT COLUMN: Experience & Education -->
+        <section class="resume-left">
+<h2>Professional Experience</h2>
+
+<!-- TCS · Associate System Engineer -->
+<div class="card hover glow tilt">
+  <h3>
+    Associate System Engineer ·
+    <span class="accent">Tata Consultancy Services (TCS)</span>
+  </h3>
+
+  <p class="muted" style="font-size: 0.85rem; margin-bottom: 0.6rem;">
+    Jul 2025 - Present · HDFC Life · Bengaluru
+  </p>
+
+  <ul>
+    <li>
+      Supporting and developing a <strong>Cordova-based Android application</strong>
+      for the HDFC Life platform using <strong>HTML, CSS, JavaScript, and jQuery</strong>.
+    </li>
+
+    <li>
+      Handling <strong>L2 production support</strong>, incident troubleshooting,
+      root cause analysis, SLA management, and coordination with development teams.
+    </li>
+
+    <li>
+      Working on <strong>API testing and debugging</strong> using Postman and
+      performing <strong>SQL-based data analysis</strong> to investigate production issues.
+    </li>
+
+    <li>
+      Contributing to <strong>JavaScript-based feature development, mobile enhancements,
+      testing, and UAT support</strong> for the application.
+    </li>
+
+    <li>
+      Improving application support processes through <strong>technical documentation,
+      recurring issue analysis, and self-help solutions</strong>.
+    </li>
+  </ul>
+
+  <div style="margin-top: 0.75rem;">
+    <span class="pill">JavaScript</span>
+    <span class="pill">HTML</span>
+    <span class="pill">CSS</span>
+    <span class="pill">Android</span>
+    <span class="pill">Cordova</span>
+    <span class="pill">jQuery</span>
+    <span class="pill">Postman</span>
+    <span class="pill">SQL</span>
+    <span class="pill">Git</span>
+  </div>
+</div>
+
+
+<!-- TCS · Graduate Trainee -->
+<div class="card hover glow tilt" style="margin-top: 1rem;">
+  <h3>
+    Graduate Trainee ·
+    <span class="accent">Tata Consultancy Services (TCS)</span>
+  </h3>
+
+  <p class="muted" style="font-size: 0.85rem; margin-bottom: 0.6rem;">
+    Jan 2025 - Jul 2025 · Chennai
+  </p>
+
+  <ul>
+    <li>
+      Completed technical training in <strong>Core Java, Selenium, SQL,
+      and software testing fundamentals</strong>.
+    </li>
+
+    <li>
+      Developed foundational experience in <strong>Java programming,
+      object-oriented concepts, database operations, and application testing</strong>.
+    </li>
+
+    <li>
+      Transitioned into the HDFC Life project, taking responsibility for
+      <strong>application support, debugging, testing, and production issue analysis</strong>.
+    </li>
+  </ul>
+
+  <div style="margin-top: 0.75rem;">
+    <span class="pill">Java</span>
+    <span class="pill">Selenium</span>
+    <span class="pill">SQL</span>
+    <span class="pill">Testing</span>
+    <span class="pill">OOP</span>
+  </div>
+</div>
+
+  <h2 class="section-title">Education</h2>
+
+  <div class="timeline">
+
+    <div class="t-item">
+      <div class="t-dot"></div>
+
+      <div class="t-content card hover glow tilt">
+        <h3>Bachelor of Computer Applications (BCA)</h3>
+
+        <p class="muted">
+          2021 - 2024
+        </p>
+
+        <p style="font-size: 0.9rem; color: var(--muted); margin-top: 0.5rem;">
+          Studied core areas of computer applications including
+          <strong>Programming, Database Management, Web Technologies,
+          Software Engineering, and Computer Science fundamentals.</strong>
+        </p>
+      </div>
+    </div>
+            <div class="t-item" style="margin-top:1.25rem">
+          <div class="t-dot"></div>
+          <div class="t-content card hover glow tilt">
+            <h3>Higher Secondary (12th CBSE) </h3>
+            <p class="muted">Sarvodya Bal Vidyalaya, Delhi · 2019 - 2020</p>
+            
+          </div>
+        </div>
+
+  </div>
+        </section>
+
+<!-- RIGHT COLUMN: Core Technologies & Projects -->
+<section class="resume-right">
+  <h2>Core Technologies</h2>
+
+  <ul class="bullets two-col">
+    <li>Java</li>
+    <li>Spring Boot</li>
+    <li>JavaScript</li>
+    <li>HTML & CSS</li>
+    <li>Android / Cordova</li>
+    <li>jQuery</li>
+    <li>SQL / MySQL</li>
+    <li>Postman</li>
+    <li>Git & GitHub</li>
+    <li>AWS S3</li>
+  </ul>
+
+  <h2 style="margin-top: 2rem;">
+    <a style="color: var(--heading);">Projects Index </a>
+  </h2>
+
+  <ul class="bullets">
+    <li>
+      HDFC Life — MSD Android Application
+      <span class="muted-links">
+        [Mobile Development]
+      </span>
+    </li>
+
+    <li>
+      SAGA Rates — Dynamic File Loading
+      <span class="muted-links">
+        [JavaScript · AWS S3]
+      </span>
+    </li>
+
+    <li>
+      Self-Help Support Utility
+      <span class="muted-links">
+        [JavaScript · Support Automation]
+      </span>
+    </li>
+
+    <li>
+      API Testing & Production Troubleshooting
+      <span class="muted-links">
+        [Postman · SQL · RCA]
+      </span>
+    </li>
+  </ul>
+</section>
+
+        <!-- FULL-WIDTH ROW: Certifications Grid -->
+        <section class="resume-certs">
+          <h2 style="margin-top: 1rem;">Certifications & Credentials</h2>
+          <div class="certs-row">
+            <!-- Cert 1 -->
+            <div class="card hover glow tilt cert-card">
+              <div class="cert-header">
+                <div class="cert-logos">
+                  <span class="cert-org-badge anthropic">Anthropic</span>
+                </div>
+                <span class="pill">AI Certification</span>
+              </div>
+              <h3>Claude Certified Associate – Foundations</h3>
+              <p class="muted" style="font-size:.84rem; margin:.1rem 0 .5rem;">Issued Aug 09, 2026 · Expires Aug 09, 2027</p>
+              <p style="font-size:.88rem; color:var(--muted);">  Official Anthropic certification demonstrating foundational knowledge
+    of Claude, generative AI concepts, and responsible AI usage.</p>
+              <div style="margin-top:.75rem;">
+                <a class="btn small outline" href="https://drive.google.com/file/d/16F_0do4m9J9jw23i1ivDiNX_geiLnsO_/view?usp=sharing" target="_blank" rel="noopener">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                  View Badge
+                </a>
+              </div>
+            </div>
+
+                        <!-- Cert 2 -->
+            <div class="card hover glow tilt cert-card">
+              <div class="cert-header">
+                <div class="cert-logos">
+                  <span class="cert-org-badge tcs">TCS</span>
+                </div>
+                <span class="pill">Rank 13,483</span>
+              </div>
+              <h3>CodeVita Season 13</h3>
+              <p class="muted" style="font-size:.84rem; margin:.1rem 0 .5rem;">Global Certificate</p>
+              <p style="font-size:.88rem; color:var(--muted);">Recognized for competitive programming performance in TCS CodeVita.</p>
+              <div style="margin-top:.75rem;">
+                <a class="btn small outline" href="https://drive.google.com/file/d/1DKpOwcy26_PrAQsmb1mKIUERBh96P5dv/view?usp=sharing" target="_blank" rel="noopener">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                  View Certificate
+                </a>
+              </div>
+            </div>
+
+            <!-- Cert 3 -->
+            <div class="card hover glow tilt cert-card">
+              <div class="cert-header">
+                <div class="cert-logos">
+                  <span class="cert-org-badge tcs">TCS iON</span>
+                </div>
+                <span class="pill">Grade A</span>
+              </div>
+              <h3>ITIL 2011 Foundation – Awareness</h3>
+              <p class="muted" style="font-size:.84rem; margin:.1rem 0 .5rem;">Completed Aug 2025 · Self-Paced/p>
+              <p style="font-size:.88rem; color:var(--muted);">TCS iON foundation course covering ITIL 2011 concepts, service management fundamentals, and IT service awareness..</p>
+              <div style="margin-top:.75rem;">
+                <a class="btn small outline" href="https://drive.google.com/file/d/1eukH2uzJvYqIhCeCzXaanvvpuJhyFKaW/view?usp=sharing" target="_blank" rel="noopener">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                  View Badge
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Vishal Mishra  · All rights reserved. </p>
+      <div class="footer-icons icons">
+        <a
+          class="icon"
+          href="https://github.com/Vishallab"
+          target="_blank"
+          rel="noopener"
+          aria-label="GitHub"
+        >
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.35-1.76-1.35-1.76-1.1-.76.08-.75.08-.75 1.22.09 1.86 1.26 1.86 1.26 1.08 1.85 2.83 1.32 3.52 1.01.11-.8.42-1.33.77-1.63-2.67-.3-5.47-1.33-5.47-5.92 0-1.31.47-2.39 1.25-3.23-.13-.31-.54-1.56.12-3.25 0 0 1.01-.32 3.31 1.23a11.5 11.5 0 0 1 6.04 0c2.3-1.55 3.31-1.23 3.31-1.23.66 1.69.25 2.94.12 3.25.78.84 1.25 1.92 1.25 3.23 0 4.6-2.81 5.62-5.49 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 12 .5Z" />
+          </svg>
+        </a>
+        <a
+          class="icon"
+          href="https://www.linkedin.com/in/vishalmishra01/"
+          target="_blank"
+          rel="noopener"
+          aria-label="LinkedIn"
+        >
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.1c.5-.9 1.8-2.2 3.7-2.2C20.3 8 24 10.6 24 16v8h-4v-7c0-1.7-.03-3.9-2.4-3.9-2.4 0-2.8 1.8-2.8 3.8V24h-4V8z" />
+          </svg>
+        </a>
+        <a
+          class="icon email-link"
+          href="mailto:ncepvishal@gmail.com?subject=Hello%20Vishal&body=Hi%20Vishal,%0D%0A%0D%0A"
+          aria-label="Email"
+        >
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M2 4h20a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 2v.01L12 13 22 6.01V6H2zm0 12h20V8l-10 7L2 8v10z" />
+          </svg>
+        </a>
+      </div>
+    </footer>
+</body>
+</html>
